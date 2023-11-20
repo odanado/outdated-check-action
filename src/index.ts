@@ -2,7 +2,12 @@ import * as core from "@actions/core";
 import { diff } from "semver";
 
 import * as npmUtils from "./npm-utils.js";
-import { PackageManager, ListDependencies, CheckResult } from "./types.js";
+import {
+  PackageManager,
+  ListDependencies,
+  CheckResult,
+  Count,
+} from "./types.js";
 
 function isPackageManager(
   packageManager: string
@@ -111,4 +116,19 @@ export function countReleaseType(results: CheckResult[]) {
     minor: count("minor"),
     patch: count("patch"),
   };
+}
+
+export async function writeSummary(count: Count) {
+  await core.summary
+    .addHeading("Not updated dependencies")
+    .addTable([
+      [
+        { data: "type", header: true },
+        { data: "count", header: true },
+      ],
+      ["major", `${count.major}`],
+      ["minor", `${count.minor}`],
+      ["patch", `${count.patch}`],
+    ])
+    .write();
 }

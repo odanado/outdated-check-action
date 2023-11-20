@@ -1,4 +1,4 @@
-import { check, countReleaseType, getInputs } from "./index.js";
+import { check, countReleaseType, getInputs, writeSummary } from "./index.js";
 
 async function run() {
   const { packageManager, cwd } = getInputs();
@@ -9,6 +9,8 @@ async function run() {
   const count = countReleaseType(results);
 
   console.log(count);
+
+  await writeSummary(count);
 }
 
 run();

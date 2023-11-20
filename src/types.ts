@@ -30,3 +30,9 @@ export type CheckResult = {
   currentVersion: string;
   releaseType: ReleaseType | null;
 };
+
+export type Count = {
+  major: number;
+  minor: number;
+  patch: number;
+};
