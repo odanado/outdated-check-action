@@ -8,7 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v4
-        node-version-file: .node-version
+        with:
+          node-version-file: .node-version
       - run: npm ci && npm run build
       - uses: .
         with:

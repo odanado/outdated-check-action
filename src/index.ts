@@ -114,6 +114,8 @@ async function run() {
   const results = await check({ packageManager, cwd });
 
   const count = countReleaseType(results);
+
+  console.log(count);
 }
 
 if (module.children) {
