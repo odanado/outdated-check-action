@@ -13,7 +13,7 @@
     "semver": "^7.5.4"
   },
   "scripts": {
-    "build": "esbuild --bundle ./src/index.ts --outdir=dist --platform=node --external:@actions/core --minify",
+    "build": "npx esbuild --bundle ./src/run.ts --outdir=dist --platform=node --external:@actions/core --format=esm --minify",
     "test": "vitest"
   }
 }

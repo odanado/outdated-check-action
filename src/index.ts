@@ -10,7 +10,7 @@ function isPackageManager(
   return ["npm", "yarn", "pnpm"].includes(packageManager);
 }
 
-function getInputs() {
+export function getInputs() {
   const packageManager = core.getInput("package-manager");
   if (!isPackageManager(packageManager)) {
     throw new Error(`Invalid package manager: ${packageManager}`);
@@ -106,18 +106,4 @@ export function countReleaseType(results: CheckResult[]) {
     minor: count("minor"),
     patch: count("patch"),
   };
-}
-
-async function run() {
-  const { packageManager, cwd } = getInputs();
-
-  const results = await check({ packageManager, cwd });
-
-  const count = countReleaseType(results);
-
-  console.log(count);
-}
-
-if (module.children) {
-  run();
 }
