@@ -5,6 +5,7 @@ async function run() {
 
   const results = await check({ packageManager, cwd });
 
+  console.log(results);
   const count = countReleaseType(results);
 
   console.log(count);
