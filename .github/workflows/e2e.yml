@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  e2e:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -11,6 +11,6 @@ jobs:
         with:
           node-version-file: .node-version
       - run: npm ci && npm run build
-      - uses: .
+      - uses: ./
         with:
           cwd: ./fixtures
