@@ -1,0 +1,12 @@
+name: "Not Updated Dependency Check Action"
+description: "Not Updated Dependency Check Action"
+inputs:
+  package-manager:
+    description: npm or yarn or pnpm
+    default: npm
+  cwd:
+    description: Current working directory
+    default: .
+runs:
+  using: "node20"
+  main: "dist/index.js"

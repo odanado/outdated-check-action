@@ -1,0 +1,19 @@
+{
+  "name": "not-updated-dependency-check-action",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "@actions/core": "^1.10.1",
+    "@types/semver": "^7.5.5",
+    "esbuild": "^0.19.6",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6"
+  },
+  "dependencies": {
+    "semver": "^7.5.4"
+  },
+  "scripts": {
+    "build": "esbuild --bundle ./src/index.ts --outdir=dist --platform=node --external:@actions/core --minify",
+    "test": "vitest"
+  }
+}
