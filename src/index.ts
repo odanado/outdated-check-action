@@ -108,10 +108,11 @@ export async function check({
   return results;
 }
 
-export function countReleaseType(results: CheckResult[]) {
+export function countReleaseType(results: CheckResult[]): Count {
   const count = (releaseType: "major" | "minor" | "patch") =>
     results.filter((result) => result.releaseType === releaseType).length;
   return {
+    total: results.length,
     major: count("major"),
     minor: count("minor"),
     patch: count("patch"),
@@ -126,9 +127,14 @@ export async function writeSummary(count: Count) {
         { data: "type", header: true },
         { data: "count", header: true },
       ],
+      ["total", `${count.total}`],
       ["major", `${count.major}`],
       ["minor", `${count.minor}`],
       ["patch", `${count.patch}`],
     ])
     .write();
+  // major: not updated count, total count, percentage
+  // minor: not updated count, total count, percentage
+  // patch: not updated count, total count, percentage
+  // all: not updated count, total count, percentage
 }

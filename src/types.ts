@@ -32,6 +32,7 @@ export type CheckResult = {
 };
 
 export type Count = {
+  total: number;
   major: number;
   minor: number;
   patch: number;
