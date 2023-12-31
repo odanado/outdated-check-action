@@ -17,3 +17,7 @@ jobs:
       - uses: ./
         with:
           cwd: ./fixtures
+
+      - uses: ./
+        with:
+          cwd: ./
