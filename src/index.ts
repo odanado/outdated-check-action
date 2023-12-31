@@ -7,6 +7,7 @@ import {
   ListDependencies,
   CheckResult,
   Count,
+  Result,
 } from "./types.js";
 
 function isPackageManager(
@@ -112,10 +113,39 @@ export function countReleaseType(results: CheckResult[]): Count {
   const count = (releaseType: "major" | "minor" | "patch") =>
     results.filter((result) => result.releaseType === releaseType).length;
   return {
-    total: results.length,
     major: count("major"),
     minor: count("minor"),
     patch: count("patch"),
+  };
+}
+
+export function convertResult(results: CheckResult[]): Result {
+  const count = (releaseType: "major" | "minor" | "patch") =>
+    results.filter((result) => result.releaseType === releaseType).length;
+
+  const totalDependencyCount = results.length;
+
+  const nonLatestMajorCount = count("major");
+  const nonLatestMinorCount = count("minor");
+  const nonLatestPatchCount = count("patch");
+  const nonLatestTotalCount =
+    nonLatestMajorCount + nonLatestMinorCount + nonLatestPatchCount;
+
+  const nonLatestMajorPercentage = nonLatestMajorCount / totalDependencyCount;
+  const nonLatestMinorPercentage = nonLatestMinorCount / totalDependencyCount;
+  const nonLatestPatchPercentage = nonLatestPatchCount / totalDependencyCount;
+  const nonLatestTotalPercentage = nonLatestTotalCount / totalDependencyCount;
+
+  return {
+    totalDependencyCount,
+    nonLatestTotalCount,
+    nonLatestMajorCount,
+    nonLatestMinorCount,
+    nonLatestPatchCount,
+    nonLatestTotalPercentage,
+    nonLatestMajorPercentage,
+    nonLatestMinorPercentage,
+    nonLatestPatchPercentage,
   };
 }
 
@@ -127,7 +157,6 @@ export async function writeSummary(count: Count) {
         { data: "type", header: true },
         { data: "count", header: true },
       ],
-      ["total", `${count.total}`],
       ["major", `${count.major}`],
       ["minor", `${count.minor}`],
       ["patch", `${count.patch}`],

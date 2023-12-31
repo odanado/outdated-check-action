@@ -32,8 +32,21 @@ export type CheckResult = {
 };
 
 export type Count = {
-  total: number;
   major: number;
   minor: number;
   patch: number;
+};
+
+export type Result = {
+  totalDependencyCount: number;
+
+  nonLatestTotalCount: number;
+  nonLatestMajorCount: number;
+  nonLatestMinorCount: number;
+  nonLatestPatchCount: number;
+
+  nonLatestTotalPercentage: number;
+  nonLatestMajorPercentage: number;
+  nonLatestMinorPercentage: number;
+  nonLatestPatchPercentage: number;
 };
