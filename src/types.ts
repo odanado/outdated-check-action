@@ -30,15 +30,16 @@ export type CheckResult = {
 };
 
 export type Result = {
-  totalDependencyCount: number;
+  totalDependenciesCount: number;
 
-  outdateTotalCount: number;
-  outdateMajorCount: number;
-  outdateMinorCount: number;
-  outdatePatchCount: number;
+  outdatedMajorDependenciesCount: number;
+  outdatedMinorDependenciesCount: number;
+  outdatedPatchDependenciesCount: number;
+  outdatedTotalDependenciesCount: number;
 
-  outdateTotalPercentage: number;
-  outdateMajorPercentage: number;
-  outdateMinorPercentage: number;
-  outdatePatchPercentage: number;
+  outdatedMajorDependenciesPercentage: number;
+  outdatedMinorDependenciesPercentage: number;
+  outdatedPatchDependenciesPercentage: number;
+
+  outdatedTotalDependenciesPercentage: number;
 };

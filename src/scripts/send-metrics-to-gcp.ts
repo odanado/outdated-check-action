@@ -2,23 +2,33 @@ import { Result } from "../types.js";
 
 const getMetrics = (): Result => {
   const result: Result = {
-    totalDependencyCount: Number.parseInt(
-      process.env["TOTAL_DEPENDENCY_COUNT"]!
+    totalDependenciesCount: Number.parseInt(
+      process.env["TOTAL_DEPENDENCIES_COUNT"]!
     ),
-    outdateTotalCount: Number.parseInt(process.env["OUTDATE_TOTAL_COUNT"]!),
-    outdateMajorCount: Number.parseInt(process.env["OUTDATE_MAJOR_COUNT"]!),
-    outdateMinorCount: Number.parseInt(process.env["OUTDATE_MINOR_COUNT"]!),
-    outdatePatchCount: Number.parseInt(process.env["OUTDATE_PATCH_COUNT"]!),
-    outdateTotalPercentage: Number.parseFloat(
-      process.env["OUTDATE_TOTAL_PERCENTAGE"]!
+
+    outdatedTotalDependenciesCount: Number.parseInt(
+      process.env["OUTDATED_TOTAL_DEPENDENCIES_COUNT"]!
     ),
-    outdateMajorPercentage: Number.parseFloat(
-      process.env["OUTDATE_MAJOR_PERCENTAGE"]!
+    outdatedMajorDependenciesCount: Number.parseInt(
+      process.env["OUTDATED_MAJOR_DEPENDENCIES_COUNT"]!
     ),
-    outdateMinorPercentage: Number.parseFloat(
-      process.env["OUTDATE_MINOR_PERCENTAGE"]!
+    outdatedMinorDependenciesCount: Number.parseInt(
+      process.env["OUTDATED_MINOR_DEPENDENCIES_COUNT"]!
     ),
-    outdatePatchPercentage: Number.parseFloat(
+    outdatedPatchDependenciesCount: Number.parseInt(
+      process.env["OUTDATED_PATCH_DEPENDENCIES_COUNT"]!
+    ),
+
+    outdatedTotalDependenciesPercentage: Number.parseFloat(
+      process.env["OUTDATED_TOTAL_DEPENDENCIES_PERCENTAGE"]!
+    ),
+    outdatedMajorDependenciesPercentage: Number.parseFloat(
+      process.env["OUTDATED_MAJOR_DEPENDENCIES_PERCENTAGE"]!
+    ),
+    outdatedMinorDependenciesPercentage: Number.parseFloat(
+      process.env["OUTDATED_MINOR_DEPENDENCIES_PERCENTAGE"]!
+    ),
+    outdatedPatchDependenciesPercentage: Number.parseFloat(
       process.env["OUTDATE_PATCH_PERCENTAGE"]!
     ),
   };

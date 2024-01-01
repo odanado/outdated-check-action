@@ -8,23 +8,25 @@ inputs:
     description: Current working directory
     default: .
 outputs:
-  total-dependency-count:
-    description: Total dependency count
-  outdate-total-count:
-    description: Count of outdated dependencies
-  outdate-major-count:
+  total-dependencies-count:
+    description: Total dependencies count
+
+  outdated-major-dependencies-count:
     description: Count of outdated dependencies upgradable to major version
-  outdate-minor-count:
+  outdated-minor-dependencies-count:
     description: Count of outdated dependencies upgradable to minor version
-  outdate-patch-count:
+  outdated-patch-dependencies-count:
     description: Count of outdated dependencies upgradable to patch version
-  outdate-total-percentage:
+  outdated-total-dependencies-count:
+    description: Count of outdated dependencies
+
+  outdated-total-dependencies-percentage:
     description: Percentage of outdated dependencies
-  outdate-major-percentage:
+  outdated-major-dependencies-percentage:
     description: Percentage of outdated dependencies upgradable to major version
-  outdate-minor-percentage:
+  outdated-minor-dependencies-percentage:
     description: Percentage of outdated dependencies upgradable to minor version
-  outdate-patch-percentage:
+  outdated-patch-dependencies-percentage:
     description: Percentage of outdated dependencies upgradable to patch version
 runs:
   using: "node20"

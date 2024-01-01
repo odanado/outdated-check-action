@@ -12,12 +12,15 @@ jobs:
           node-version-file: .node-version
 
       - run: npm ci && npm run build
-      - uses: ./
+
+      - name: run outdate check
+        uses: ./
         id: outdate-check
         with:
           cwd: ./
 
-      - run: npm run run-script ./src/scripts/send-metrics-to-gcp.ts
+      - name: send metrics to GCP
+        run: npm run run-script ./src/scripts/send-metrics-to-gcp.ts
         env:
           TOTAL_DEPENDENCY_COUNT: ${{ steps.outdate-check.outputs.total-dependency-count }}
           OUTDATE_TOTAL_COUNT: ${{ steps.outdate-check.outputs.outdate-total-count }}

@@ -26,14 +26,14 @@ test("convertResult", () => {
 
   const result = convertResult(checkResults);
 
-  expect(result.totalDependencyCount).toBe(3);
-  expect(result.outdateTotalCount).toBe(3);
-  expect(result.outdateMajorCount).toBe(1);
-  expect(result.outdateMinorCount).toBe(1);
-  expect(result.outdatePatchCount).toBe(1);
+  expect(result.totalDependenciesCount).toBe(3);
+  expect(result.outdatedMajorDependenciesCount).toBe(1);
+  expect(result.outdatedMinorDependenciesCount).toBe(1);
+  expect(result.outdatedPatchDependenciesCount).toBe(1);
+  expect(result.outdatedTotalDependenciesCount).toBe(3);
 
-  expect(result.outdateTotalPercentage).toBe(1);
-  expect(result.outdateMajorPercentage).toBeCloseTo(1 / 3);
-  expect(result.outdateMinorPercentage).toBeCloseTo(1 / 3);
-  expect(result.outdatePatchPercentage).toBeCloseTo(1 / 3);
+  expect(result.outdatedTotalDependenciesPercentage).toBe(1);
+  expect(result.outdatedMajorDependenciesPercentage).toBeCloseTo(1 / 3);
+  expect(result.outdatedMinorDependenciesPercentage).toBeCloseTo(1 / 3);
+  expect(result.outdatedPatchDependenciesPercentage).toBeCloseTo(1 / 3);
 });

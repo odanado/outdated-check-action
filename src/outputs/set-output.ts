@@ -2,15 +2,39 @@ import * as core from "@actions/core";
 import { Result } from "../types.js";
 
 export function setOutput(result: Result) {
-  core.setOutput("total-dependency-count", result.totalDependencyCount);
+  core.setOutput("total-dependencies-count", result.totalDependenciesCount);
 
-  core.setOutput("outdate-total-count", result.outdateTotalCount);
-  core.setOutput("outdate-major-count", result.outdateMajorCount);
-  core.setOutput("outdate-minor-count", result.outdateMinorCount);
-  core.setOutput("outdate-patch-count", result.outdatePatchCount);
+  core.setOutput(
+    "outdated-major-dependencies-count",
+    result.outdatedMajorDependenciesCount
+  );
+  core.setOutput(
+    "outdated-minor-dependencies-count",
+    result.outdatedMinorDependenciesCount
+  );
+  core.setOutput(
+    "outdated-patch-dependencies-count",
+    result.outdatedPatchDependenciesCount
+  );
+  core.setOutput(
+    "outdated-total-dependencies-count",
+    result.outdatedTotalDependenciesCount
+  );
 
-  core.setOutput("outdate-total-percentage", result.outdateTotalPercentage);
-  core.setOutput("outdate-major-percentage", result.outdateMajorPercentage);
-  core.setOutput("outdate-minor-percentage", result.outdateMinorPercentage);
-  core.setOutput("outdate-patch-percentage", result.outdatePatchPercentage);
+  core.setOutput(
+    "outdated-major-dependencies-percentage",
+    result.outdatedMajorDependenciesPercentage
+  );
+  core.setOutput(
+    "outdated-minor-dependencies-percentage",
+    result.outdatedMinorDependenciesPercentage
+  );
+  core.setOutput(
+    "outdated-patch-dependencies-percentage",
+    result.outdatedPatchDependenciesPercentage
+  );
+  core.setOutput(
+    "outdated-total-dependencies-percentage",
+    result.outdatedTotalDependenciesPercentage
+  );
 }
