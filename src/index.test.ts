@@ -1,5 +1,12 @@
 import { expect, test, vi } from "vitest";
-import { listDependencies, getCurrentVersion, check } from "./index.js";
+import {
+  listDependencies,
+  getCurrentVersion,
+  check,
+  convertResult,
+} from "./index.js";
+import { satisfies } from "semver";
+import { CheckResult } from "./types.js";
 
 vi.mock("./npm-utils.js", () => {
   return {
@@ -85,8 +92,8 @@ test("check", async () => {
     },
   ]);
 });
-test("countReleaseType", () => {
-  const results = [
+test("convertResult", () => {
+  const checkResults = [
     {
       name: "react",
       version: "17.0.2",
@@ -105,10 +112,18 @@ test("countReleaseType", () => {
       currentVersion: "5.0.1",
       releaseType: "major",
     },
-  ];
-  const count = (releaseType: "major" | "minor" | "patch") =>
-    results.filter((x) => x.releaseType === releaseType).length;
-  expect(count("major")).toBe(1);
-  expect(count("minor")).toBe(1);
-  expect(count("patch")).toBe(1);
+  ] satisfies CheckResult[];
+
+  const result = convertResult(checkResults);
+
+  expect(result.totalDependencyCount).toBe(3);
+  expect(result.nonLatestTotalCount).toBe(3);
+  expect(result.nonLatestMajorCount).toBe(1);
+  expect(result.nonLatestMinorCount).toBe(1);
+  expect(result.nonLatestPatchCount).toBe(1);
+
+  expect(result.nonLatestTotalPercentage).toBe(1);
+  expect(result.nonLatestMajorPercentage).toBeCloseTo(1 / 3);
+  expect(result.nonLatestMinorPercentage).toBeCloseTo(1 / 3);
+  expect(result.nonLatestPatchPercentage).toBeCloseTo(1 / 3);
 });

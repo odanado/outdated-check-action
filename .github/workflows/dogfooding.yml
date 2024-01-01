@@ -1,4 +1,4 @@
-name: "e2e"
+name: "dogfooding"
 on:
   workflow_dispatch:
 
@@ -10,10 +10,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
-      - run: npm install
-        working-directory: ./fixtures
 
       - run: npm ci && npm run build
       - uses: ./
         with:
-          cwd: ./fixtures
+          cwd: ./

@@ -1,1 +1,1 @@
-# not-updated-dependency-check-action
+# outdate-check-action

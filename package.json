@@ -1,5 +1,5 @@
 {
-  "name": "not-updated-dependency-check-action",
+  "name": "outdate-check-action",
   "private": true,
   "type": "module",
   "devDependencies": {

@@ -109,16 +109,6 @@ export async function check({
   return results;
 }
 
-export function countReleaseType(results: CheckResult[]): Count {
-  const count = (releaseType: "major" | "minor" | "patch") =>
-    results.filter((result) => result.releaseType === releaseType).length;
-  return {
-    major: count("major"),
-    minor: count("minor"),
-    patch: count("patch"),
-  };
-}
-
 export function convertResult(results: CheckResult[]): Result {
   const count = (releaseType: "major" | "minor" | "patch") =>
     results.filter((result) => result.releaseType === releaseType).length;
@@ -149,7 +139,7 @@ export function convertResult(results: CheckResult[]): Result {
   };
 }
 
-export async function writeSummary(count: Count) {
+export async function writeSummary(result: Result) {
   await core.summary
     .addHeading("Not updated dependencies")
     .addTable([
