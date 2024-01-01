@@ -40,13 +40,13 @@ export type Count = {
 export type Result = {
   totalDependencyCount: number;
 
-  nonLatestTotalCount: number;
-  nonLatestMajorCount: number;
-  nonLatestMinorCount: number;
-  nonLatestPatchCount: number;
+  outdateTotalCount: number;
+  outdateMajorCount: number;
+  outdateMinorCount: number;
+  outdatePatchCount: number;
 
-  nonLatestTotalPercentage: number;
-  nonLatestMajorPercentage: number;
-  nonLatestMinorPercentage: number;
-  nonLatestPatchPercentage: number;
+  outdateTotalPercentage: number;
+  outdateMajorPercentage: number;
+  outdateMinorPercentage: number;
+  outdatePatchPercentage: number;
 };

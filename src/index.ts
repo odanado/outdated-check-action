@@ -115,45 +115,58 @@ export function convertResult(results: CheckResult[]): Result {
 
   const totalDependencyCount = results.length;
 
-  const nonLatestMajorCount = count("major");
-  const nonLatestMinorCount = count("minor");
-  const nonLatestPatchCount = count("patch");
-  const nonLatestTotalCount =
-    nonLatestMajorCount + nonLatestMinorCount + nonLatestPatchCount;
+  const outdateMajorCount = count("major");
+  const outdateMinorCount = count("minor");
+  const outdatePatchCount = count("patch");
+  const outdateTotalCount =
+    outdateMajorCount + outdateMinorCount + outdatePatchCount;
 
-  const nonLatestMajorPercentage = nonLatestMajorCount / totalDependencyCount;
-  const nonLatestMinorPercentage = nonLatestMinorCount / totalDependencyCount;
-  const nonLatestPatchPercentage = nonLatestPatchCount / totalDependencyCount;
-  const nonLatestTotalPercentage = nonLatestTotalCount / totalDependencyCount;
+  const outdateMajorPercentage = outdateMajorCount / totalDependencyCount;
+  const outdateMinorPercentage = outdateMinorCount / totalDependencyCount;
+  const outdatePatchPercentage = outdatePatchCount / totalDependencyCount;
+  const outdateTotalPercentage = outdateTotalCount / totalDependencyCount;
 
   return {
     totalDependencyCount,
-    nonLatestTotalCount,
-    nonLatestMajorCount,
-    nonLatestMinorCount,
-    nonLatestPatchCount,
-    nonLatestTotalPercentage,
-    nonLatestMajorPercentage,
-    nonLatestMinorPercentage,
-    nonLatestPatchPercentage,
+    outdateTotalCount,
+    outdateMajorCount,
+    outdateMinorCount,
+    outdatePatchCount,
+    outdateTotalPercentage,
+    outdateMajorPercentage,
+    outdateMinorPercentage,
+    outdatePatchPercentage,
   };
 }
 
 export async function writeSummary(result: Result) {
+  const displayPercentage = (value: number) => {
+    return `${(value * 100).toFixed(2)}%`;
+  };
+
   await core.summary
-    .addHeading("Not updated dependencies")
+    .addHeading("outdated dependencies")
     .addTable([
       [
         { data: "type", header: true },
         { data: "count", header: true },
       ],
-      ["major", `${count.major}`],
-      ["minor", `${count.minor}`],
-      ["patch", `${count.patch}`],
+      ["major", `${result.outdateMajorCount}`],
+      ["minor", `${result.outdateMinorCount}`],
+      ["patch", `${result.outdatePatchCount}`],
+      ["total", `${result.outdateTotalCount}`],
+    ])
+
+    .addHeading("outdated dependencies percentage")
+    .addTable([
+      [
+        { data: "type", header: true },
+        { data: "percentage", header: true },
+      ],
+      ["major", displayPercentage(result.outdateMajorPercentage)],
+      ["minor", displayPercentage(result.outdateMinorPercentage)],
+      ["patch", displayPercentage(result.outdatePatchPercentage)],
+      ["total", displayPercentage(result.outdateTotalPercentage)],
     ])
     .write();
-  // major: not updated count, total count, percentage
-  // minor: not updated count, total count, percentage
-  // patch: not updated count, total count, percentage
-  // all: not updated count, total count, percentage
 }

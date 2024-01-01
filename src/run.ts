@@ -1,10 +1,4 @@
-import {
-  check,
-  convertResult,
-  countReleaseType,
-  getInputs,
-  writeSummary,
-} from "./index.js";
+import { check, convertResult, getInputs, writeSummary } from "./index.js";
 
 async function run() {
   const { packageManager, cwd } = getInputs();
@@ -12,13 +6,12 @@ async function run() {
   const checkResults = await check({ packageManager, cwd });
 
   console.log(checkResults);
-  const count = countReleaseType(checkResults);
 
-  console.log(count);
+  const result = convertResult(checkResults);
 
-  await writeSummary(count);
+  console.log(result);
 
-  console.log(convertResult(checkResults));
+  await writeSummary(result);
 }
 
 run();

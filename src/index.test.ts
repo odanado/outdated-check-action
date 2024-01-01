@@ -117,13 +117,13 @@ test("convertResult", () => {
   const result = convertResult(checkResults);
 
   expect(result.totalDependencyCount).toBe(3);
-  expect(result.nonLatestTotalCount).toBe(3);
-  expect(result.nonLatestMajorCount).toBe(1);
-  expect(result.nonLatestMinorCount).toBe(1);
-  expect(result.nonLatestPatchCount).toBe(1);
+  expect(result.outdateTotalCount).toBe(3);
+  expect(result.outdateMajorCount).toBe(1);
+  expect(result.outdateMinorCount).toBe(1);
+  expect(result.outdatePatchCount).toBe(1);
 
-  expect(result.nonLatestTotalPercentage).toBe(1);
-  expect(result.nonLatestMajorPercentage).toBeCloseTo(1 / 3);
-  expect(result.nonLatestMinorPercentage).toBeCloseTo(1 / 3);
-  expect(result.nonLatestPatchPercentage).toBeCloseTo(1 / 3);
+  expect(result.outdateTotalPercentage).toBe(1);
+  expect(result.outdateMajorPercentage).toBeCloseTo(1 / 3);
+  expect(result.outdateMinorPercentage).toBeCloseTo(1 / 3);
+  expect(result.outdatePatchPercentage).toBeCloseTo(1 / 3);
 });
