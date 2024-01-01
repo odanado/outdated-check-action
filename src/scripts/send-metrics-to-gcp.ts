@@ -6,9 +6,20 @@ const getMetrics = (): Result => {
       process.env["TOTAL_DEPENDENCIES_COUNT"]!
     ),
 
-    outdatedTotalDependenciesCount: Number.parseInt(
-      process.env["OUTDATED_TOTAL_DEPENDENCIES_COUNT"]!
+    outdatedDependenciesCount: Number.parseInt(
+      process.env["OUTDATED_DEPENDENCIES_COUNT"]!
     ),
+    latestDependenciesCount: Number.parseInt(
+      process.env["LATEST_DEPENDENCIES_COUNT"]!
+    ),
+
+    outdatedDependenciesPercentage: Number.parseFloat(
+      process.env["OUTDATED_DEPENDENCIES_PERCENTAGE"]!
+    ),
+    latestDependenciesPercentage: Number.parseFloat(
+      process.env["LATEST_DEPENDENCIES_PERCENTAGE"]!
+    ),
+
     outdatedMajorDependenciesCount: Number.parseInt(
       process.env["OUTDATED_MAJOR_DEPENDENCIES_COUNT"]!
     ),
@@ -19,9 +30,6 @@ const getMetrics = (): Result => {
       process.env["OUTDATED_PATCH_DEPENDENCIES_COUNT"]!
     ),
 
-    outdatedTotalDependenciesPercentage: Number.parseFloat(
-      process.env["OUTDATED_TOTAL_DEPENDENCIES_PERCENTAGE"]!
-    ),
     outdatedMajorDependenciesPercentage: Number.parseFloat(
       process.env["OUTDATED_MAJOR_DEPENDENCIES_PERCENTAGE"]!
     ),

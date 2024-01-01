@@ -10,6 +10,15 @@ inputs:
 outputs:
   total-dependencies-count:
     description: Total dependencies count
+  outdated-dependencies-count:
+    description: Count of outdated dependencies
+  latest-dependencies-count:
+    description: Count of latest dependencies
+
+  outdated-dependencies-percentage:
+    description: Percentage of outdated dependencies
+  latest-dependencies-percentage:
+    description: Percentage of latest dependencies
 
   outdated-major-dependencies-count:
     description: Count of outdated dependencies upgradable to major version
@@ -17,11 +26,7 @@ outputs:
     description: Count of outdated dependencies upgradable to minor version
   outdated-patch-dependencies-count:
     description: Count of outdated dependencies upgradable to patch version
-  outdated-total-dependencies-count:
-    description: Count of outdated dependencies
 
-  outdated-total-dependencies-percentage:
-    description: Percentage of outdated dependencies
   outdated-major-dependencies-percentage:
     description: Percentage of outdated dependencies upgradable to major version
   outdated-minor-dependencies-percentage:

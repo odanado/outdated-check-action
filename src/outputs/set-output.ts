@@ -5,6 +5,21 @@ export function setOutput(result: Result) {
   core.setOutput("total-dependencies-count", result.totalDependenciesCount);
 
   core.setOutput(
+    "outdated-dependencies-count",
+    result.outdatedDependenciesCount
+  );
+  core.setOutput("latest-dependencies-count", result.latestDependenciesCount);
+
+  core.setOutput(
+    "outdated-dependencies-percentage",
+    result.outdatedDependenciesPercentage
+  );
+  core.setOutput(
+    "latest-dependencies-percentage",
+    result.latestDependenciesPercentage
+  );
+
+  core.setOutput(
     "outdated-major-dependencies-count",
     result.outdatedMajorDependenciesCount
   );
@@ -15,10 +30,6 @@ export function setOutput(result: Result) {
   core.setOutput(
     "outdated-patch-dependencies-count",
     result.outdatedPatchDependenciesCount
-  );
-  core.setOutput(
-    "outdated-total-dependencies-count",
-    result.outdatedTotalDependenciesCount
   );
 
   core.setOutput(
@@ -32,9 +43,5 @@ export function setOutput(result: Result) {
   core.setOutput(
     "outdated-patch-dependencies-percentage",
     result.outdatedPatchDependenciesPercentage
-  );
-  core.setOutput(
-    "outdated-total-dependencies-percentage",
-    result.outdatedTotalDependenciesPercentage
   );
 }

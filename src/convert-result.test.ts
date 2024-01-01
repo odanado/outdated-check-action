@@ -30,9 +30,9 @@ test("convertResult", () => {
   expect(result.outdatedMajorDependenciesCount).toBe(1);
   expect(result.outdatedMinorDependenciesCount).toBe(1);
   expect(result.outdatedPatchDependenciesCount).toBe(1);
-  expect(result.outdatedTotalDependenciesCount).toBe(3);
+  expect(result.outdatedDependenciesCount).toBe(3);
 
-  expect(result.outdatedTotalDependenciesPercentage).toBe(1);
+  expect(result.outdatedDependenciesPercentage).toBe(1);
   expect(result.outdatedMajorDependenciesPercentage).toBeCloseTo(1 / 3);
   expect(result.outdatedMinorDependenciesPercentage).toBeCloseTo(1 / 3);
   expect(result.outdatedPatchDependenciesPercentage).toBeCloseTo(1 / 3);

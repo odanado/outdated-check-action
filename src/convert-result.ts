@@ -9,30 +9,36 @@ export function convertResult(results: CheckResult[]): Result {
   const outdatedMajorDependenciesCount = count("major");
   const outdatedMinorDependenciesCount = count("minor");
   const outdatedPatchDependenciesCount = count("patch");
-  const outdatedTotalDependenciesCount =
+  const outdatedDependenciesCount =
     outdatedMajorDependenciesCount +
     outdatedMinorDependenciesCount +
     outdatedPatchDependenciesCount;
+  const latestDependenciesCount =
+    totalDependenciesCount - outdatedDependenciesCount;
 
   const outdatedMajorDependenciesPercentage =
-    outdatedMajorDependenciesCount / outdatedTotalDependenciesCount;
+    outdatedMajorDependenciesCount / outdatedDependenciesCount;
   const outdatedMinorDependenciesPercentage =
-    outdatedMinorDependenciesCount / outdatedTotalDependenciesCount;
+    outdatedMinorDependenciesCount / outdatedDependenciesCount;
   const outdatedPatchDependenciesPercentage =
-    outdatedPatchDependenciesCount / outdatedTotalDependenciesCount;
+    outdatedPatchDependenciesCount / outdatedDependenciesCount;
 
-  const outdatedTotalDependenciesPercentage =
-    outdatedTotalDependenciesCount / totalDependenciesCount;
+  const outdatedDependenciesPercentage =
+    outdatedDependenciesCount / totalDependenciesCount;
+  const latestDependenciesPercentage =
+    latestDependenciesCount / totalDependenciesCount;
 
   return {
     totalDependenciesCount,
+    outdatedDependenciesCount,
+    latestDependenciesCount,
+    outdatedDependenciesPercentage,
+    latestDependenciesPercentage,
     outdatedMajorDependenciesCount,
     outdatedMinorDependenciesCount,
     outdatedPatchDependenciesCount,
-    outdatedTotalDependenciesCount,
     outdatedMajorDependenciesPercentage,
     outdatedMinorDependenciesPercentage,
     outdatedPatchDependenciesPercentage,
-    outdatedTotalDependenciesPercentage,
   };
 }

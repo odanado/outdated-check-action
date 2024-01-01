@@ -22,12 +22,18 @@ jobs:
       - name: send metrics to GCP
         run: npm run run-script ./src/scripts/send-metrics-to-gcp.ts
         env:
-          TOTAL_DEPENDENCY_COUNT: ${{ steps.outdate-check.outputs.total-dependency-count }}
-          OUTDATE_TOTAL_COUNT: ${{ steps.outdate-check.outputs.outdate-total-count }}
-          OUTDATE_MAJOR_COUNT: ${{ steps.outdate-check.outputs.outdate-major-count }}
-          OUTDATE_MINOR_COUNT: ${{ steps.outdate-check.outputs.outdate-minor-count }}
-          OUTDATE_PATCH_COUNT: ${{ steps.outdate-check.outputs.outdate-patch-count }}
-          OUTDATE_TOTAL_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-total-percentage }}
-          OUTDATE_MAJOR_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-major-percentage }}
-          OUTDATE_MINOR_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-minor-percentage }}
-          OUTDATE_PATCH_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-patch-percentage }}
+          TOTAL_DEPENDENCIES_COUNT: ${{ steps.outdate-check.outputs.total-dependencies-count }}
+
+          OUTDATED_DEPENDENCIES_COUNT: ${{ steps.outdate-check.outputs.outdated-dependencies-count }}
+          LATEST_DEPENDENCIES_COUNT: ${{ steps.outdate-check.outputs.latest-dependencies-count }}
+
+          OUTDATED_DEPENDENCIES_PERCENTAGE: ${{ steps.outdate-check.outputs.outdated-dependencies-percentage }}
+          LATEST_DEPENDENCIES_PERCENTAGE: ${{ steps.outdate-check.outputs.latest-dependencies-percentage }}
+
+          OUTDATED_MAJOR_DEPENDENCIES_COUNT: ${{ steps.outdate-check.outputs.outdated-major-dependencies-count }}
+          OUTDATED_MINOR_DEPENDENCIES_COUNT: ${{ steps.outdate-check.outputs.outdated-minor-dependencies-count }}
+          OUTDATED_PATCH_DEPENDENCIES_COUNT: ${{ steps.outdate-check.outputs.outdated-patch-dependencies-count }}
+
+          OUTDATED_MAJOR_DEPENDENCIES_PERCENTAGE: ${{ steps.outdate-check.outputs.outdated-major-dependencies-percentage }}
+          OUTDATED_MINOR_DEPENDENCIES_PERCENTAGE: ${{ steps.outdate-check.outputs.outdated-minor-dependencies-percentage }}
+          OUTDATED_PATCH_DEPENDENCIES_PERCENTAGE: ${{ steps.outdate-check.outputs.outdated-patch-dependencies-percentage }}

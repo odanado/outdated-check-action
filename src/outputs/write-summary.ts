@@ -24,7 +24,7 @@ export async function writeSummary(result: Result) {
       ["major", `${result.outdatedMajorDependenciesCount}`],
       ["minor", `${result.outdatedMinorDependenciesCount}`],
       ["patch", `${result.outdatedPatchDependenciesCount}`],
-      ["total", `${result.outdatedTotalDependenciesCount}`],
+      ["total", `${result.outdatedDependenciesCount}`],
     ])
 
     .addHeading("outdated dependencies percentage")
@@ -36,7 +36,7 @@ export async function writeSummary(result: Result) {
       ["major", displayPercentage(result.outdatedMajorDependenciesPercentage)],
       ["minor", displayPercentage(result.outdatedMinorDependenciesPercentage)],
       ["patch", displayPercentage(result.outdatedPatchDependenciesPercentage)],
-      ["total", displayPercentage(result.outdatedTotalDependenciesPercentage)],
+      ["total", displayPercentage(result.outdatedDependenciesPercentage)],
     ])
     .write();
 }
