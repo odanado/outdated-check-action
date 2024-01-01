@@ -17,11 +17,17 @@ export function convertResult(results: CheckResult[]): Result {
     totalDependenciesCount - outdatedDependenciesCount;
 
   const outdatedMajorDependenciesPercentage =
-    outdatedMajorDependenciesCount / outdatedDependenciesCount;
+    outdatedDependenciesCount !== 0
+      ? outdatedMajorDependenciesCount / outdatedDependenciesCount
+      : 0;
   const outdatedMinorDependenciesPercentage =
-    outdatedMinorDependenciesCount / outdatedDependenciesCount;
+    outdatedDependenciesCount !== 0
+      ? outdatedMinorDependenciesCount / outdatedDependenciesCount
+      : 0;
   const outdatedPatchDependenciesPercentage =
-    outdatedPatchDependenciesCount / outdatedDependenciesCount;
+    outdatedDependenciesCount !== 0
+      ? outdatedPatchDependenciesCount / outdatedDependenciesCount
+      : 0;
 
   const outdatedDependenciesPercentage =
     outdatedDependenciesCount / totalDependenciesCount;
