@@ -37,13 +37,16 @@ const getMetrics = (): Result => {
       process.env["OUTDATED_MINOR_DEPENDENCIES_PERCENTAGE"]!
     ),
     outdatedPatchDependenciesPercentage: Number.parseFloat(
-      process.env["OUTDATE_PATCH_PERCENTAGE"]!
+      process.env["OUTDATED_PATCH_DEPENDENCIES_PERCENTAGE"]!
     ),
   };
 
   for (const [key, value] of Object.entries(result)) {
     if (value === undefined) {
       throw new Error(`"${key}" is undefined`);
+    }
+    if (Number.isNaN(value)) {
+      throw new Error(`"${key}" is NaN`);
     }
   }
 
