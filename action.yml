@@ -1,5 +1,5 @@
-name: "Not Updated Dependency Check Action"
-description: "Not Updated Dependency Check Action"
+name: "Outdate Check Action"
+description: "Outdate Check Action"
 inputs:
   package-manager:
     description: npm or yarn or pnpm
@@ -7,6 +7,25 @@ inputs:
   cwd:
     description: Current working directory
     default: .
+outputs:
+  total-dependency-count:
+    description: Total dependency count
+  outdate-total-count:
+    description: Count of outdated dependencies
+  outdate-major-count:
+    description: Count of outdated dependencies upgradable to major version
+  outdate-minor-count:
+    description: Count of outdated dependencies upgradable to minor version
+  outdate-patch-count:
+    description: Count of outdated dependencies upgradable to patch version
+  outdate-total-percentage:
+    description: Percentage of outdated dependencies
+  outdate-major-percentage:
+    description: Percentage of outdated dependencies upgradable to major version
+  outdate-minor-percentage:
+    description: Percentage of outdated dependencies upgradable to minor version
+  outdate-patch-percentage:
+    description: Percentage of outdated dependencies upgradable to patch version
 runs:
   using: "node20"
   main: "dist/run.js"
