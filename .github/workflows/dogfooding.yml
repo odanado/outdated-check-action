@@ -13,5 +13,8 @@ jobs:
 
       - run: npm ci && npm run build
       - uses: ./
+        id: outdate-check
         with:
           cwd: ./
+
+      - run: npm run run-script ./src/scripts/send-metrics-to-gcp.ts ${{ toJSON(steps.outdate-check.outputs)}}

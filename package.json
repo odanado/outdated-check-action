@@ -4,8 +4,10 @@
   "type": "module",
   "devDependencies": {
     "@actions/core": "^1.10.1",
+    "@google-cloud/monitoring": "^4.0.0",
     "@types/semver": "^7.5.5",
     "esbuild": "^0.19.6",
+    "tsx": "^4.7.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6"
   },
@@ -14,6 +16,7 @@
   },
   "scripts": {
     "build": "npx esbuild --bundle ./src/run.ts --outdir=dist --platform=node --external:@actions/core --format=esm",
-    "test": "vitest"
+    "test": "vitest",
+    "run-script": "tsx"
   }
 }
