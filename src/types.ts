@@ -4,7 +4,6 @@ export type PackageManager = "npm" | "yarn" | "pnpm";
 
 // tiny typing
 export type ListDependencies = {
-  name: string;
   dependencies: {
     [name: string]: {
       version: string;
@@ -13,7 +12,6 @@ export type ListDependencies = {
   devDependencies: {
     [name: string]: {
       version: string;
-      resolved: string;
     };
   };
 };
@@ -29,12 +27,6 @@ export type CheckResult = {
   version: string;
   currentVersion: string;
   releaseType: ReleaseType | null;
-};
-
-export type Count = {
-  major: number;
-  minor: number;
-  patch: number;
 };
 
 export type Result = {
