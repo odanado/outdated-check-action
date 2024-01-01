@@ -1,3 +1,5 @@
+import { MetricServiceClient, protos } from "@google-cloud/monitoring";
+
 import { Result } from "../types.js";
 
 const getMetrics = (): Result => {
@@ -53,6 +55,55 @@ const getMetrics = (): Result => {
   return result;
 };
 
+const getMetricsType = (repository: string, name: string) => {
+  return `custom.googleapis.com/outdate-check/${repository}/${name}`;
+};
+
 const result = getMetrics();
 
-console.log({ result });
+const client = new MetricServiceClient();
+
+const projectId = process.env["GCP_PROJECT_ID"]!;
+const repository = process.env["GITHUB_REPOSITORY"]!;
+
+const now = new Date().getTime();
+
+const interval = {
+  endTime: {
+    seconds: now / 1000,
+  },
+};
+
+const resource = {
+  type: "global",
+  labels: {
+    project_id: projectId,
+  },
+};
+
+const keys = Object.keys(result) as (keyof Result)[];
+
+const timeSeries = keys.map((key): protos.google.monitoring.v3.ITimeSeries => {
+  const valueKey = Number.isInteger(result[key]) ? "int64Value" : "doubleValue";
+  const point = {
+    interval,
+    value: {
+      [valueKey]: result[key],
+    },
+  };
+  return {
+    metric: {
+      type: getMetricsType(repository, key),
+    },
+    resource,
+    points: [point],
+  };
+});
+
+const request = {
+  name: client.projectPath(projectId),
+  timeSeries,
+};
+
+await client.createTimeSeries(request);
+console.log("Done writing time series data.");
