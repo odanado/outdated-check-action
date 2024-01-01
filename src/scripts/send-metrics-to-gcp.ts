@@ -1,17 +1,26 @@
 import { Result } from "../types.js";
 
-const getMetrics = (arg: string): Result => {
-  const data = JSON.parse(arg);
+const getMetrics = (): Result => {
   const result: Result = {
-    totalDependencyCount: data["total-dependency-count"],
-    outdateTotalCount: data["outdate-total-count"],
-    outdateMajorCount: data["outdate-major-count"],
-    outdateMinorCount: data["outdate-minor-count"],
-    outdatePatchCount: data["outdate-patch-count"],
-    outdateTotalPercentage: data["outdate-total-percentage"],
-    outdateMajorPercentage: data["outdate-major-percentage"],
-    outdateMinorPercentage: data["outdate-minor-percentage"],
-    outdatePatchPercentage: data["outdate-patch-percentage"],
+    totalDependencyCount: Number.parseInt(
+      process.env["TOTAL_DEPENDENCY_COUNT"]!
+    ),
+    outdateTotalCount: Number.parseInt(process.env["OUTDATE_TOTAL_COUNT"]!),
+    outdateMajorCount: Number.parseInt(process.env["OUTDATE_MAJOR_COUNT"]!),
+    outdateMinorCount: Number.parseInt(process.env["OUTDATE_MINOR_COUNT"]!),
+    outdatePatchCount: Number.parseInt(process.env["OUTDATE_PATCH_COUNT"]!),
+    outdateTotalPercentage: Number.parseFloat(
+      process.env["OUTDATE_TOTAL_PERCENTAGE"]!
+    ),
+    outdateMajorPercentage: Number.parseFloat(
+      process.env["OUTDATE_MAJOR_PERCENTAGE"]!
+    ),
+    outdateMinorPercentage: Number.parseFloat(
+      process.env["OUTDATE_MINOR_PERCENTAGE"]!
+    ),
+    outdatePatchPercentage: Number.parseFloat(
+      process.env["OUTDATE_PATCH_PERCENTAGE"]!
+    ),
   };
 
   for (const [key, value] of Object.entries(result)) {
@@ -23,6 +32,6 @@ const getMetrics = (arg: string): Result => {
   return result;
 };
 
-const result = getMetrics(process.argv[2]);
+const result = getMetrics();
 
 console.log({ result });

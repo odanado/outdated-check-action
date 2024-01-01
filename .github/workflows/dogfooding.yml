@@ -17,4 +17,14 @@ jobs:
         with:
           cwd: ./
 
-      - run: npm run run-script ./src/scripts/send-metrics-to-gcp.ts ${{ toJSON(steps.outdate-check.outputs)}}
+      - run: npm run run-script ./src/scripts/send-metrics-to-gcp.ts
+        env:
+          TOTAL_DEPENDENCY_COUNT: ${{ steps.outdate-check.outputs.total-dependency-count }}
+          OUTDATE_TOTAL_COUNT: ${{ steps.outdate-check.outputs.outdate-total-count }}
+          OUTDATE_MAJOR_COUNT: ${{ steps.outdate-check.outputs.outdate-major-count }}
+          OUTDATE_MINOR_COUNT: ${{ steps.outdate-check.outputs.outdate-minor-count }}
+          OUTDATE_PATCH_COUNT: ${{ steps.outdate-check.outputs.outdate-patch-count }}
+          OUTDATE_TOTAL_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-total-percentage }}
+          OUTDATE_MAJOR_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-major-percentage }}
+          OUTDATE_MINOR_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-minor-percentage }}
+          OUTDATE_PATCH_PERCENTAGE: ${{ steps.outdate-check.outputs.outdate-patch-percentage }}
