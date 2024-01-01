@@ -145,6 +145,14 @@ export async function writeSummary(result: Result) {
   };
 
   await core.summary
+    .addHeading("total dependencies")
+    .addTable([
+      [
+        { data: "type", header: true },
+        { data: "count", header: true },
+      ],
+      ["total", `${result.totalDependencyCount}`],
+    ])
     .addHeading("outdated dependencies")
     .addTable([
       [
