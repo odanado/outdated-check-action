@@ -9,7 +9,7 @@
     "esbuild": "^0.19.6",
     "tsx": "^4.7.0",
     "typescript": "^5.2.2",
-    "vitest": "^0.34.6"
+    "vitest": "^1.0.0"
   },
   "dependencies": {
     "semver": "^7.5.4"
