@@ -9,11 +9,7 @@ async function run() {
 
   const checkResults = await checkOutdate({ packageManager, cwd });
 
-  console.log(checkResults);
-
   const result = convertResult(checkResults);
-
-  console.log(result);
 
   setOutput(result);
   await writeSummary(result);
