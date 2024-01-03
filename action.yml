@@ -1,5 +1,5 @@
 name: "Outdated Check Action"
-description: "`outdated-check-action` categorizes and quantifies outdated dependencies by major and minor versions, providing precise counts and percentages for effective version control."
+description: "Measures outdated dependencies by major, minor, and patch versions, providing counts and percentages."
 inputs:
   package-manager:
     description: npm or yarn or pnpm

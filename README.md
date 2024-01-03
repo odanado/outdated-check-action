@@ -1,6 +1,6 @@
 # outdated-check-action
 
-`outdated-check-action` categorizes and quantifies outdated dependencies by major and minor versions, providing precise counts and percentages for effective version control.
+`outdated-check-action` measures outdated dependencies by major, minor, and patch versions, providing counts and percentages.
 
 ## Usage
 
