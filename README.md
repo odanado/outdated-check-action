@@ -58,3 +58,4 @@ See [dogfooding.yml](.github/workflows/dogfooding.yml)
 
 1. Update `VERSION` file.
 2. Push to `main` branch.
+3. Create a new release.
