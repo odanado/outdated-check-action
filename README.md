@@ -52,6 +52,10 @@ jobs:
 
 See [dogfooding.yml](.github/workflows/dogfooding.yml)
 
+### Dashboard on GCP
+
+![gcp](./docs/gcp-example.png)
+
 ## Development
 
 ### Publish new version
