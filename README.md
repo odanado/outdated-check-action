@@ -1,6 +1,6 @@
 # outdated-check-action
 
-This tool analyzes and categorizes outdated dependencies in your project by major, minor, and patch versions, providing a clear count and percentage for each type.
+`outdated-check-action` categorizes and quantifies outdated dependencies by major and minor versions, providing precise counts and percentages for effective version control.
 
 ## Usage
 
