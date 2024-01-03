@@ -2641,12 +2641,14 @@ async function writeSummary(result) {
   const displayPercentage = (value) => {
     return `${(value * 100).toFixed(2)}%`;
   };
-  await core3.summary.addHeading("total dependencies").addTable([
+  await core3.summary.addHeading("summary").addTable([
     [
       { data: "type", header: true },
       { data: "count", header: true }
     ],
-    ["total", `${result.totalDependenciesCount}`]
+    ["total", `${result.totalDependenciesCount}`],
+    ["outdated", `${result.outdatedDependenciesCount}`],
+    ["latest", `${result.latestDependenciesCount}`]
   ]).addHeading("outdated dependencies").addTable([
     [
       { data: "type", header: true },
@@ -2672,9 +2674,7 @@ async function writeSummary(result) {
 async function run() {
   const { packageManager, cwd } = getInputs();
   const checkResults = await checkOutdate({ packageManager, cwd });
-  console.log(checkResults);
   const result = convertResult(checkResults);
-  console.log(result);
   setOutput2(result);
   await writeSummary(result);
 }
