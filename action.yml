@@ -38,4 +38,4 @@ outputs:
     description: Percentage of outdated patch dependencies.
 runs:
   using: "node20"
-  main: "dist/run.js"
+  main: "dist/index.js"
