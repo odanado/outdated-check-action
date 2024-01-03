@@ -1,1 +1,1 @@
-# outdate-check-action
+# outdated-check-action

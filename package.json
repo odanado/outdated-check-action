@@ -1,5 +1,5 @@
 {
-  "name": "outdate-check-action",
+  "name": "outdated-check-action",
   "private": true,
   "type": "module",
   "devDependencies": {
