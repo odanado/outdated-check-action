@@ -1,5 +1,5 @@
-name: "Outdate Check Action"
-description: "Outdate Check Action"
+name: "Outdated Check Action"
+description: "This tool analyzes and categorizes outdated dependencies in your project by major, minor, and patch versions, providing a clear count and percentage for each type."
 inputs:
   package-manager:
     description: npm or yarn or pnpm
