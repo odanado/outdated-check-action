@@ -9,7 +9,7 @@ inputs:
     default: .
 outputs:
   total-dependencies-count:
-    description: Total dependencies count
+    description: Total number of dependencies
   outdated-dependencies-count:
     description: Count of outdated dependencies
   latest-dependencies-count:
@@ -21,18 +21,18 @@ outputs:
     description: Percentage of latest dependencies
 
   outdated-major-dependencies-count:
-    description: Count of outdated dependencies upgradable to major version
+    description: Total number of outdated major dependencies.
   outdated-minor-dependencies-count:
-    description: Count of outdated dependencies upgradable to minor version
+    description: Total number of outdated minor dependencies.
   outdated-patch-dependencies-count:
-    description: Count of outdated dependencies upgradable to patch version
+    description: Total number of outdated patch dependencies.
 
   outdated-major-dependencies-percentage:
-    description: Percentage of outdated dependencies upgradable to major version
+    description: Percentage of outdated major dependencies.
   outdated-minor-dependencies-percentage:
-    description: Percentage of outdated dependencies upgradable to minor version
+    description: Percentage of outdated minor dependencies.
   outdated-patch-dependencies-percentage:
-    description: Percentage of outdated dependencies upgradable to patch version
+    description: Percentage of outdated patch dependencies.
 runs:
   using: "node20"
   main: "dist/run.js"
