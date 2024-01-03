@@ -83,6 +83,7 @@ const resource = {
 
 const keys = Object.keys(result) as (keyof Result)[];
 
+console.log("keys", keys);
 const timeSeries = keys.map((key): protos.google.monitoring.v3.ITimeSeries => {
   const valueKey = key.includes("Count") ? "int64Value" : "doubleValue";
   const point = {

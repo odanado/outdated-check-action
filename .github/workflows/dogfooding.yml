@@ -14,7 +14,7 @@ jobs:
         with:
           credentials_json: "${{ secrets.GOOGLE_CREDENTIALS }}"
 
-      - run: npm ci && npm run build
+      - run: npm ci
 
       - name: run outdate check
         uses: ./
