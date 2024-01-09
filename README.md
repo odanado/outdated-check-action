@@ -56,6 +56,10 @@ See [dogfooding.yml](.github/workflows/dogfooding.yml)
 
 ![gcp](./docs/gcp-example.png)
 
+## Inspired by
+
+[GitHub Actions と Datadog でコードベースの定点観測 - Speaker Deck](https://speakerdeck.com/kawamataryo/github-actions-to-datadog-dekodobesunoding-dian-guan-ce)
+
 ## Development
 
 ### Publish new version
